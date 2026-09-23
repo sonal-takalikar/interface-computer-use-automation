@@ -1,0 +1,33 @@
+{
+  "request_id": "escalate_e073ee53",
+  "capability_id": "apex_member_lookup",
+  "step_id": "step_03_extract",
+  "reason": "Automation stuck on step_03_extract (EXTRACT on Extract the ledger balance for the High-Yield Savings account): Message: Failed to resolve element using multi-strategy locator: Extract the ledger balance for the High-Yield Savings account (tried: id=None, name=18,430.50, anchor=High-Yield Savings, xpath=None); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception\n",
+  "created_at_iso": "2026-09-23T19:31:00.558869+00:00",
+  "session_id": "58612daa",
+  "paused_url": "http://127.0.0.1:8080/member_detail?id=M-10928",
+  "screenshot_path": "evidence/escalate_e073ee53_blocked_state.png",
+  "post_screenshot_path": null,
+  "status": "PENDING_OPERATOR_TAKEOVER",
+  "current_step_description": "EXTRACT on Extract the ledger balance for the High-Yield Savings account",
+  "expected_state": "Target element 'Extract the ledger balance for the High-Yield Savings account' interactable for action 'EXTRACT'",
+  "observed_state": "NoSuchElementException: Message: Failed to resolve element using multi-strategy locator: Extract the ledger balance for the High-Yield Savings account (tried: id=None, name=18,430.50, anchor=High-Yield Savings, xpath=None); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception",
+  "window_handle": "54EE175C72C8A1CE5757C157FCDCCD36",
+  "operator_actions_recorded": [],
+  "resumed_at_iso": null,
+  "context": {
+    "exception_type": "NoSuchElementException",
+    "target": {
+      "description": "Extract the ledger balance for the High-Yield Savings account",
+      "role": "cell",
+      "name": "18,430.50",
+      "anchor_text": "High-Yield Savings",
+      "anchor_direction": "right",
+      "tag_name": null,
+      "xpath": null,
+      "css_selector": null,
+      "normalized_coords": null,
+      "attributes": {}
+    }
+  }
+}

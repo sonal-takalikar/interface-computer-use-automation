@@ -1,0 +1,10 @@
+Replay Status: BUSINESS_OUTCOME
+Business Outcome: {
+  "outcome_code": "MEMBER_NOT_FOUND",
+  "description": "Member record not found in institution database partition.",
+  "matched_signal": "does not exist in institution partition",
+  "params": {
+    "member_id": "M-99999"
+  }
+}
+Duration: 1670.2ms

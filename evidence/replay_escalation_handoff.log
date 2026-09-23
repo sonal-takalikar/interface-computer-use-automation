@@ -1,0 +1,15 @@
+Replay Status: ESCALATED
+Capability: apex_open_subaccount
+Escalation Details: {
+  "session_id": "e9647666",
+  "actions": [
+    "Operator entered supervisor override code 'AUTH-OP-SUPERVISOR-44'",
+    "Operator clicked 'Confirm & Open Sub-Account'",
+    "OPERATOR_CONFIRMED_AND_RESUMED",
+    "Resumed at URL: http://127.0.0.1:8080/account_confirmation?id=M-10928&type=HY_SAVINGS&deposit=500.00"
+  ]
+}
+Step Trace:
+- step_01_navigate: SUCCESS ()
+- step_02_click: SUCCESS ()
+- step_03_click: ESCALATED (Escalated to human operator: e9647666)

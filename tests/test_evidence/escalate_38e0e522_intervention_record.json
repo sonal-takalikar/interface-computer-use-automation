@@ -1,0 +1,36 @@
+{
+  "request_id": "escalate_38e0e522",
+  "capability_id": "cap_unresolved_test",
+  "step_id": "step_01_broken",
+  "reason": "Automation stuck on step_01_broken (Permanently broken button): Hardware fault: input device disabled",
+  "created_at_iso": "2026-09-23T19:54:37.414834+00:00",
+  "session_id": "sess_live_123",
+  "paused_url": "http://127.0.0.1:8080/servicing",
+  "screenshot_path": "tests/test_evidence/escalate_38e0e522_blocked_state.png",
+  "post_screenshot_path": "tests/test_evidence/escalate_38e0e522_post_operator_action.png",
+  "status": "RESOLVED_AND_RESUMED",
+  "current_step_description": "Permanently broken button",
+  "expected_state": "Target element 'Broken Button' interactable for action 'CLICK'",
+  "observed_state": "RuntimeError: Hardware fault: input device disabled",
+  "window_handle": "CDwindow-449102",
+  "operator_actions_recorded": [
+    "Operator entered supervisor override code 'AUTH-OP-SUPERVISOR-44'",
+    "OPERATOR_CONFIRMED_AND_RESUMED"
+  ],
+  "resumed_at_iso": "2026-09-23T19:54:37.922364+00:00",
+  "context": {
+    "exception_type": "RuntimeError",
+    "target": {
+      "description": "Broken Button",
+      "role": null,
+      "name": null,
+      "anchor_text": null,
+      "anchor_direction": "right",
+      "tag_name": null,
+      "xpath": null,
+      "css_selector": "#btn_broken",
+      "normalized_coords": null,
+      "attributes": {}
+    }
+  }
+}

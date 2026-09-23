@@ -1,0 +1,23 @@
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Environment files
+.env
+!.env.example
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Test reports and temporary logs
+*.log
+!evidence/*.log

@@ -1,0 +1,27 @@
+{
+  "request_id": "escalate_bca81ed6",
+  "capability_id": "apex_member_lookup",
+  "step_id": "step_02_click",
+  "reason": "Step checkpoint assertion failed for 'step_02_click': URL 'http://127.0.0.1:8080/member_detail?id=M-10928' does not contain 'http://127.0.0.1:8080/servicing/member'",
+  "created_at_iso": "2026-09-23T19:54:15.793841+00:00",
+  "session_id": "e94dbc2a",
+  "paused_url": "http://127.0.0.1:8080/member_detail?id=M-10928",
+  "screenshot_path": "evidence/escalate_bca81ed6_blocked_state.png",
+  "post_screenshot_path": null,
+  "status": "PENDING_OPERATOR_TAKEOVER",
+  "current_step_description": "Checkpoint assertion for CLICK on Quick Open M-10928 link",
+  "expected_state": "Checkpoint passed: URL_MATCHES 'http://127.0.0.1:8080/servicing/member'",
+  "observed_state": "URL 'http://127.0.0.1:8080/member_detail?id=M-10928' does not contain 'http://127.0.0.1:8080/servicing/member'",
+  "window_handle": "73A6249F1AA1E58BDFAEC3954ABC0CE3",
+  "operator_actions_recorded": [],
+  "resumed_at_iso": null,
+  "context": {
+    "checkpoint": {
+      "assertion_type": "URL_MATCHES",
+      "description": "Verify that the browser navigates to the member account details page",
+      "target": null,
+      "expected_value": "http://127.0.0.1:8080/servicing/member",
+      "timeout_seconds": 5.0
+    }
+  }
+}

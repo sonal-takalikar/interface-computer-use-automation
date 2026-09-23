@@ -1,0 +1,33 @@
+{
+  "request_id": "escalate_5e590522",
+  "capability_id": "cap_chk_test",
+  "step_id": "success_checkpoint",
+  "reason": "Terminal success checkpoint failed: Expected text 'Verified Terminal State' not found in page text",
+  "created_at_iso": "2026-09-23T20:25:33.706441+00:00",
+  "session_id": "sess_live_123",
+  "paused_url": "http://127.0.0.1:8080/servicing",
+  "screenshot_path": "tests/test_evidence/escalate_5e590522_blocked_state.png",
+  "post_screenshot_path": "tests/test_evidence/escalate_5e590522_post_operator_action.png",
+  "status": "RESOLVED_AND_RESUMED",
+  "current_step_description": "Final Success Checkpoint Verification",
+  "expected_state": "Success checkpoint satisfied: TEXT_CONTAINS 'Verified Terminal State'",
+  "observed_state": "Expected text 'Verified Terminal State' not found in page text",
+  "window_handle": "CDwindow-449102",
+  "operator_actions_recorded": [
+    "Operator clicked 'Verify Identity & Unlock Console'",
+    "Operator dismissed unhandled maintenance alert",
+    "Operator entered supervisor override code 'AUTH-OP-SUPERVISOR-44'",
+    "Operator clicked 'Confirm & Open Sub-Account'",
+    "OPERATOR_CONFIRMED_AND_RESUMED"
+  ],
+  "resumed_at_iso": "2026-09-23T20:25:36.033768+00:00",
+  "context": {
+    "checkpoint": {
+      "assertion_type": "TEXT_CONTAINS",
+      "description": "Verify completed terminal state",
+      "target": null,
+      "expected_value": "Verified Terminal State",
+      "timeout_seconds": 5.0
+    }
+  }
+}

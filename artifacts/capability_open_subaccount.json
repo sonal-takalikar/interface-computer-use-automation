@@ -1,0 +1,136 @@
+{
+  "metadata": {
+    "id": "apex_open_subaccount",
+    "name": "ApexCore Open Sub-Account",
+    "version": "1.0.0",
+    "schema_version": "1.0.0",
+    "description": "Compiled capability for goal: Open a new sub-account for member M-10928 and reach the confirmation screen",
+    "target_app": "ApexCore 2008 Servicing Console",
+    "app_version": "8.4.2-R3",
+    "vendor": "ApexCore Banking Solutions",
+    "author": "Artifact Compiler from SimulatedGeminiProvider",
+    "created_at_iso": "2026-09-09T23:26:58.929294+00:00",
+    "review_status": "APPROVED"
+  },
+  "inputs": {},
+  "outputs": {},
+  "policy": {
+    "allowed_domains": [
+      "127.0.0.1",
+      "localhost"
+    ],
+    "allowed_actions": [
+      "NAVIGATE",
+      "CLICK",
+      "FILL",
+      "SELECT",
+      "EXTRACT",
+      "ASSERT_CHECKPOINT"
+    ],
+    "require_human_confirmation_for_risky": true
+  },
+  "steps": [
+    {
+      "step_id": "step_01_navigate",
+      "description": "NAVIGATE to http://127.0.0.1:8080/member_detail?id=M-10928",
+      "action_type": "NAVIGATE",
+      "target": null,
+      "value_template": "http://127.0.0.1:8080/member_detail?id=M-10928",
+      "extraction": null,
+      "checkpoint": null,
+      "risk_class": "SAFE_REVERSIBLE",
+      "recoverable_rules": [
+        {
+          "name": "Maintenance Interstitial Notice",
+          "trigger_text": "SYSTEM NOTICE: CORE HOST MAINTENANCE WINDOW",
+          "dismiss_locator": {
+            "description": "",
+            "role": "button",
+            "name": "Acknowledge & Proceed",
+            "anchor_text": "ALERT MSG 7104",
+            "anchor_direction": "right",
+            "tag_name": null,
+            "xpath": null,
+            "css_selector": "#btn_ack_interstitial",
+            "normalized_coords": null,
+            "attributes": {}
+          },
+          "max_retries": 2
+        }
+      ],
+      "timeout_seconds": 5.0
+    },
+    {
+      "step_id": "step_02_click",
+      "description": "CLICK on Open Sub-Account Button",
+      "action_type": "CLICK",
+      "target": {
+        "description": "Open Sub-Account Button",
+        "role": "link",
+        "name": "+ Open Sub-Account",
+        "anchor_text": null,
+        "anchor_direction": "right",
+        "tag_name": null,
+        "xpath": null,
+        "css_selector": "#btn_act_open_subacct",
+        "normalized_coords": null,
+        "attributes": {}
+      },
+      "value_template": null,
+      "extraction": null,
+      "checkpoint": {
+        "assertion_type": "URL_MATCHES",
+        "description": "Verify navigated to open account form",
+        "target": null,
+        "expected_value": "open_account",
+        "timeout_seconds": 5.0
+      },
+      "risk_class": "SAFE_REVERSIBLE",
+      "recoverable_rules": [],
+      "timeout_seconds": 5.0
+    },
+    {
+      "step_id": "step_03_click",
+      "description": "CLICK on Continue to Authorization Button",
+      "action_type": "CLICK",
+      "target": {
+        "description": "Continue to Authorization Button",
+        "role": "button",
+        "name": "Continue to Authorization",
+        "anchor_text": null,
+        "anchor_direction": "right",
+        "tag_name": null,
+        "xpath": null,
+        "css_selector": "#btn_submit_open_acct",
+        "normalized_coords": null,
+        "attributes": {}
+      },
+      "value_template": null,
+      "extraction": null,
+      "checkpoint": {
+        "assertion_type": "ELEMENT_VISIBLE",
+        "description": "Verify confirmation modal appears",
+        "target": null,
+        "expected_value": "#modal_confirm_subaccount",
+        "timeout_seconds": 5.0
+      },
+      "risk_class": "RISKY_IRREVERSIBLE",
+      "recoverable_rules": [],
+      "timeout_seconds": 5.0
+    }
+  ],
+  "business_outcomes": [
+    {
+      "outcome_code": "MEMBER_NOT_FOUND",
+      "signal_text": "does not exist in institution partition",
+      "description": "Member record not found in institution database partition."
+    }
+  ],
+  "success_checkpoint": {
+    "assertion_type": "TEXT_CONTAINS",
+    "description": "Verify completed profile view with ledger balances",
+    "target": null,
+    "expected_value": "Account Summary & Ledger Balances",
+    "timeout_seconds": 5.0
+  }
+}

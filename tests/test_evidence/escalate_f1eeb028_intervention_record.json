@@ -1,0 +1,35 @@
+{
+  "request_id": "escalate_f1eeb028",
+  "capability_id": "cap_stuck_escalate",
+  "step_id": "step_01_search",
+  "reason": "Automation stuck on step_01_search (Click Search Member Link): TimeoutException: Locator not found",
+  "created_at_iso": "2026-09-23T20:25:33.703312+00:00",
+  "session_id": "sess_live_123",
+  "paused_url": "http://127.0.0.1:8080/servicing",
+  "screenshot_path": "tests/test_evidence/escalate_f1eeb028_blocked_state.png",
+  "post_screenshot_path": null,
+  "status": "PENDING_OPERATOR",
+  "current_step_description": "Click Search Member Link",
+  "expected_state": "Target element 'Search Link' interactable for action 'CLICK'",
+  "observed_state": "RuntimeError: TimeoutException: Locator not found",
+  "window_handle": "CDwindow-449102",
+  "operator_actions_recorded": [
+    "Session paused for human operator in non-interactive environment."
+  ],
+  "resumed_at_iso": null,
+  "context": {
+    "exception_type": "RuntimeError",
+    "target": {
+      "description": "Search Link",
+      "role": null,
+      "name": null,
+      "anchor_text": null,
+      "anchor_direction": "right",
+      "tag_name": null,
+      "xpath": null,
+      "css_selector": "#lnk_search",
+      "normalized_coords": null,
+      "attributes": {}
+    }
+  }
+}

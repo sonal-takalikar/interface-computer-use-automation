@@ -1,0 +1,25 @@
+{
+  "request_id": "escalate_e8790f85",
+  "capability_id": "cap_subacct_test",
+  "step_id": "step_01_open_subaccount",
+  "reason": "Action 'Open Sub-Account and Debit Funds' is classified as RISKY_IRREVERSIBLE and requires operator authorization.",
+  "created_at_iso": "2026-09-23T19:31:33.471699+00:00",
+  "session_id": "sess_live_123",
+  "paused_url": "http://127.0.0.1:8080/servicing",
+  "screenshot_path": "tests/test_evidence/escalate_e8790f85_blocked_state.png",
+  "post_screenshot_path": "tests/test_evidence/escalate_e8790f85_post_operator_action.png",
+  "status": "RESOLVED_AND_RESUMED",
+  "current_step_description": "Open Sub-Account and Debit Funds",
+  "expected_state": "Operator authorization override code entered and confirmed",
+  "observed_state": "Step blocked by RISKY_IRREVERSIBLE governance policy",
+  "window_handle": "CDwindow-449102",
+  "operator_actions_recorded": [
+    "Operator clicked 'Verify Identity & Unlock Console'",
+    "Operator dismissed unhandled maintenance alert",
+    "Operator entered supervisor override code 'AUTH-OP-SUPERVISOR-44'",
+    "Operator clicked 'Confirm & Open Sub-Account'",
+    "OPERATOR_CONFIRMED_AND_RESUMED"
+  ],
+  "resumed_at_iso": "2026-09-23T19:31:35.790564+00:00",
+  "context": {}
+}

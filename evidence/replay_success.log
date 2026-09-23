@@ -1,0 +1,13 @@
+Replay Status: SUCCESS
+Capability: apex_member_lookup v1.0.0
+Outputs: {
+  "savings_balance": "$18,430.50"
+}
+Duration: 1957.6ms
+
+Step Trace:
+- step_01_navigate (NAVIGATE): SUCCESS via navigate (conf: 1.0)
+- step_02_click (CLICK): SUCCESS via id_attribute (conf: 0.95)
+- step_03_fill (FILL): SUCCESS via id_attribute (conf: 0.95)
+- step_04_click (CLICK): SUCCESS via id_attribute (conf: 0.95)
+- step_05_extract (EXTRACT): SUCCESS via id_attribute (conf: 0.95)

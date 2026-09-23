@@ -1,0 +1,191 @@
+{
+  "metadata": {
+    "id": "apex_member_lookup_stuck",
+    "name": "ApexCore Member Lookup (Stuck State Fixture)",
+    "version": "1.0.0",
+    "schema_version": "1.0.0",
+    "description": "Deterministic stuck-state capability fixture triggering human escalation via security challenge modal",
+    "target_app": "ApexCore 2008 Servicing Console",
+    "app_version": "8.4.2-R3",
+    "vendor": "ApexCore Banking Solutions",
+    "author": "Artifact Compiler",
+    "created_at_iso": "2026-09-19T13:30:00.000000+00:00",
+    "review_status": "APPROVED"
+  },
+  "inputs": {
+    "member_id": {
+      "type": "string",
+      "description": "Input value for Member Number Input",
+      "default": "M-10928",
+      "required": true,
+      "example": "M-10928"
+    }
+  },
+  "outputs": {
+    "savings_balance": {
+      "type": "string",
+      "description": "Current ledger balance for High-Yield Savings account",
+      "shape": "scalar"
+    }
+  },
+  "policy": {
+    "allowed_domains": [
+      "127.0.0.1",
+      "localhost"
+    ],
+    "allowed_actions": [
+      "NAVIGATE",
+      "CLICK",
+      "FILL",
+      "SELECT",
+      "EXTRACT",
+      "ASSERT_CHECKPOINT"
+    ],
+    "require_human_confirmation_for_risky": true
+  },
+  "steps": [
+    {
+      "step_id": "step_01_navigate",
+      "description": "NAVIGATE to http://127.0.0.1:8080/servicing?stuck_modal=1",
+      "action_type": "NAVIGATE",
+      "target": null,
+      "value_template": "http://127.0.0.1:8080/servicing?stuck_modal=1",
+      "extraction": null,
+      "checkpoint": null,
+      "risk_class": "SAFE_REVERSIBLE",
+      "recoverable_rules": [],
+      "timeout_seconds": 5.0
+    },
+    {
+      "step_id": "step_02_click",
+      "description": "CLICK on Search Member Account Link",
+      "action_type": "CLICK",
+      "target": {
+        "description": "Search Member Account Link",
+        "role": "link",
+        "name": "Search Member Account",
+        "anchor_text": "Search Member Account",
+        "anchor_direction": "right",
+        "tag_name": null,
+        "xpath": null,
+        "css_selector": "#lnk_nav_member_search",
+        "normalized_coords": null,
+        "attributes": {}
+      },
+      "value_template": null,
+      "extraction": null,
+      "checkpoint": null,
+      "risk_class": "SAFE_REVERSIBLE",
+      "recoverable_rules": [],
+      "timeout_seconds": 5.0
+    },
+    {
+      "step_id": "step_03_fill",
+      "description": "FILL on Member Number Input",
+      "action_type": "FILL",
+      "target": {
+        "description": "Member Number Input",
+        "role": "textbox",
+        "name": "Member ID",
+        "anchor_text": "Member Number:",
+        "anchor_direction": "right",
+        "tag_name": null,
+        "xpath": null,
+        "css_selector": "#ctl00_cphBody_txtMemberID",
+        "normalized_coords": null,
+        "attributes": {
+          "id": "ctl00_cphBody_txtMemberID",
+          "name": "ctl00$cphBody$txtMemberID"
+        }
+      },
+      "value_template": "{{inputs.member_id}}",
+      "extraction": null,
+      "checkpoint": null,
+      "risk_class": "SAFE_REVERSIBLE",
+      "recoverable_rules": [],
+      "timeout_seconds": 5.0
+    },
+    {
+      "step_id": "step_04_click",
+      "description": "CLICK on Search Member Button",
+      "action_type": "CLICK",
+      "target": {
+        "description": "Search Member Button",
+        "role": "button",
+        "name": "Search Member",
+        "anchor_text": null,
+        "anchor_direction": "right",
+        "tag_name": null,
+        "xpath": null,
+        "css_selector": "#ctl00_cphBody_btnSearch",
+        "normalized_coords": null,
+        "attributes": {
+          "id": "ctl00_cphBody_btnSearch",
+          "type": "submit"
+        }
+      },
+      "value_template": null,
+      "extraction": null,
+      "checkpoint": {
+        "assertion_type": "URL_MATCHES",
+        "description": "Verify navigated to member detail page",
+        "target": null,
+        "expected_value": "member_detail",
+        "timeout_seconds": 5.0
+      },
+      "risk_class": "SAFE_REVERSIBLE",
+      "recoverable_rules": [],
+      "timeout_seconds": 5.0
+    },
+    {
+      "step_id": "step_05_extract",
+      "description": "EXTRACT on High-Yield Savings Balance",
+      "action_type": "EXTRACT",
+      "target": {
+        "description": "High-Yield Savings Balance",
+        "role": "cell",
+        "name": "Savings Balance",
+        "anchor_text": "High-Yield Savings",
+        "anchor_direction": "right",
+        "tag_name": null,
+        "xpath": null,
+        "css_selector": "#acct_balance_1",
+        "normalized_coords": null,
+        "attributes": {
+          "id": "acct_balance_1"
+        }
+      },
+      "value_template": null,
+      "extraction": {
+        "variable_name": "savings_balance",
+        "target_type": "string",
+        "regex_pattern": null,
+        "description": "Extract savings_balance"
+      },
+      "checkpoint": {
+        "assertion_type": "TEXT_CONTAINS",
+        "description": "Verify account summary table visible",
+        "target": null,
+        "expected_value": "Account Summary & Ledger Balances",
+        "timeout_seconds": 5.0
+      },
+      "risk_class": "SAFE_REVERSIBLE",
+      "recoverable_rules": [],
+      "timeout_seconds": 5.0
+    }
+  ],
+  "business_outcomes": [
+    {
+      "outcome_code": "MEMBER_NOT_FOUND",
+      "signal_text": "does not exist in institution partition",
+      "description": "Member record not found in institution database partition."
+    }
+  ],
+  "success_checkpoint": {
+    "assertion_type": "TEXT_CONTAINS",
+    "description": "Verify completed profile view with ledger balances",
+    "target": null,
+    "expected_value": "Account Summary & Ledger Balances",
+    "timeout_seconds": 5.0
+  }
+}
