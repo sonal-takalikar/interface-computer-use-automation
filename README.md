@@ -80,7 +80,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 
 # Install required dependencies
-pip install selenium pydantic httpx google-genai python-dotenv
+pip install -r requirements.txt
 ```
 
 Ensure Google Chrome is installed on your machine. Selenium WebDriver automatically provisions the matching ChromeDriver.
@@ -95,17 +95,20 @@ cp .env.example .env
 
 Edit `.env`:
 ```env
-# Google Gemini API Key for live discovery
+# Google Gemini API Key for Discovery Agent
 GEMINI_API_KEY=your_gemini_api_key_here
 
-# LLM Mode: Set to "true" to run 100% offline without an API key
-USE_SIMULATED_LLM=true
+# LLM Model Name (default: gemini-3.5-flash-lite)
+GEMINI_MODEL=gemini-3.5-flash-lite
 
-# Mock Legacy Banking Server Port
-MOCK_SERVER_PORT=8080
+# Target Application Port (default: 8080)
+PORT=8080
+
+# Browser Automation Headless Mode (true/false, default: false for visible demo)
+SELENIUM_HEADLESS=false
 ```
 
-> **Note**: If `GEMINI_API_KEY` is not provided or `USE_SIMULATED_LLM=true`, the system automatically activates `SimulatedGeminiProvider`, providing a deterministic offline discovery run identical to live Gemini.
+> **Note**: If `GEMINI_API_KEY` is not provided or set to placeholder value, the system automatically activates `SimulatedGeminiProvider`, providing a deterministic offline discovery run for testing.
 
 ---
 
@@ -137,10 +140,12 @@ All execution logs, JSON artifacts, and step screenshots are written to `/eviden
 The test suite covers all unit, schema, compiler, locator, checkpoint, safety, and integration flows:
 
 ```bash
+pytest -v
+# Or using unittest:
 python -m unittest discover -s tests -p "test_*.py"
 ```
 
-All 19 tests pass in ~2 seconds:
+All 25 tests pass in ~8 seconds:
 - `test_artifact_schema.py`: Schema validation, serialization/deserialization, and version checking.
 - `test_compiler.py`: Trace compilation, parameterization, and locator synthesis.
 - `test_locators.py`: Multi-strategy locator resolution and confidence scoring.
@@ -235,7 +240,7 @@ python -m core.cli replay \
 │   ├── replay_business_outcome_state.png
 │   ├── replay_recoverable_interstitial.log
 │   └── replay_escalation_handoff.log
-└── tests/                            # 19 comprehensive automated tests
+└── tests/                            # 25 comprehensive automated tests
 ```
 
 ---
